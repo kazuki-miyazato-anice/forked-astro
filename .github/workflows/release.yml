@@ -8,7 +8,6 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: scripts
 
 jobs:
   changelog:
@@ -75,3 +74,4 @@ jobs:
           title: "[ci] release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_USERCONFIG: ${{ github.workspace }}/.npmrc
