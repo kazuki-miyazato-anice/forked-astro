@@ -15,9 +15,9 @@ export async function getRegistry(): Promise<string> {
 	const packageManager = detectPackageManager()?.name || 'npm';
 	try {
 		const { stdout } = await shell(packageManager, ['config', 'get', 'registry']);
-		return stdout?.trim()?.replace(/\/$/, '') || 'https://registry.npmjs.org';
+		return stdout?.trim()?.replace(/\/$/, '') || 'https://npm.pkg.github.com';
 	} catch (e) {
-		return 'https://registry.npmjs.org';
+		return 'https://npm.pkg.github.com';
 	}
 }
 

@@ -12,9 +12,9 @@ import { shell } from './shell.js';
 async function getRegistry(packageManager: string): Promise<string> {
 	try {
 		const { stdout } = await shell(packageManager, ['config', 'get', 'registry']);
-		return stdout?.trim()?.replace(/\/$/, '') || 'https://registry.npmjs.org';
+		return stdout?.trim()?.replace(/\/$/, '') || 'https://npm.pkg.github.com';
 	} catch (e) {
-		return 'https://registry.npmjs.org';
+		return 'https://npm.pkg.github.com';
 	}
 }
 
