@@ -39,10 +39,9 @@ export async function emitESMImage(
 	// Build
 	if (!watchMode) {
 		const pathname = decodeURI(url.pathname);
-		const filename = path.basename(pathname, path.extname(pathname) + `.${fileMetadata.format}`);
 
 		const handle = fileEmitter({
-			name: filename,
+			name: pathname.replace(process.env.INIT_CWD || '', '').replaceAll('/', '---'),
 			source: await fs.readFile(url),
 			type: 'asset',
 		});

@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/withastro/astro.git"
+    "url": "https://github.com/kazuki-miyazato-anice/forked-astro.git"
   },
   "scripts": {
     "release": "pnpm run build && changeset publish",
