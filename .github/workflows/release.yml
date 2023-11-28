@@ -61,7 +61,9 @@ jobs:
 
       - run: npm config set registry https://npm.pkg.github.com/
 
-      - run: cat ${{ github.workspace }}/.npmrc
+      - name: Creating .npmrc
+        run: |
+          cp -vp ${{ github.workspace }}/.npmrc $HOME/.npmrc
 
       - name: Create Release Pull Request or Publish
         id: changesets
