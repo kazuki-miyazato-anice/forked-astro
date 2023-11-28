@@ -55,11 +55,13 @@ jobs:
         run: pnpm run build:ci
 
       - run: |
-          echo "@username:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-          echo "registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "@username:registry=https://npm.pkg.github.com" >> ${{ github.workspace }}/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ${{ github.workspace }}/.npmrc
+          echo "registry=https://npm.pkg.github.com/" >> ${{ github.workspace }}/.npmrc
 
       - run: npm config set registry https://npm.pkg.github.com/
+
+      - run: cat ${{ github.workspace }}/.npmrc
 
       - name: Create Release Pull Request or Publish
         id: changesets
