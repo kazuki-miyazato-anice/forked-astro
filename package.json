@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/kazuki-miyazato-anice/forked-astro.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
+  },
   "scripts": {
     "release": "pnpm run build && changeset publish",
     "build": "turbo run build --filter=astro --filter=create-astro --filter=\"@astrojs/*\" --filter=\"@benchmark/*\"",
