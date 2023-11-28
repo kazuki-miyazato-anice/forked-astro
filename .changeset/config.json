@@ -3,6 +3,7 @@
   "changelog": ["@changesets/changelog-github", { "repo": "kazuki-miyazato-anice/forked-astro" }],
   "commit": false,
   "linked": [],
+  "registry": "https://npm.pkg.github.com/",
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
