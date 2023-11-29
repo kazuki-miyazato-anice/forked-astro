@@ -57,6 +57,7 @@ jobs:
       - run: |
           echo "@username:registry=https://npm.pkg.github.com" >> ${{ github.workspace }}/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ${{ github.workspace }}/.npmrc
+          echo "registry=https://registry.npmjs.org/" >> ${{ github.workspace }}/.npmrc
           echo "registry=https://npm.pkg.github.com/" >> ${{ github.workspace }}/.npmrc
 
       - run: npm config set registry https://npm.pkg.github.com/
@@ -67,13 +68,14 @@ jobs:
 
       - name: Create Release Pull Request or Publish
         id: changesets
-        uses: changesets/action@4c56449f3ec63185ae5b0b9816e1acbea337399d
+        uses: changesets/action@v2
         with:
           # Note: pnpm install after versioning is necessary to refresh lockfile
           version: pnpm run version
           publish: pnpm exec changeset publish
           commit: "[ci] release"
           title: "[ci] release"
+          registry: npm.pkg.github.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_USERCONFIG: ${{ github.workspace }}/.npmrc
