@@ -56,6 +56,7 @@ jobs:
 
       - run: |
           echo "@username:registry=https://npm.pkg.github.com" >> ${{ github.workspace }}/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ${{ github.workspace }}/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ${{ github.workspace }}/.npmrc
           echo "registry=https://registry.npmjs.org/" >> ${{ github.workspace }}/.npmrc
           echo "registry=https://npm.pkg.github.com/" >> ${{ github.workspace }}/.npmrc
